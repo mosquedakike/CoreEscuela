@@ -30,6 +30,15 @@ namespace CoreEscuela.Enitdades
             añoDeCreacion = año;
         }
 
+        public Escuela(string nombre, int año, TiposEscuela tipo, string pais="", string ciudad="")
+        {
+            //asignacion de tuplas
+            (Nombre, añoDeCreacion) = (nombre, año);
+            Pais = pais;
+            Ciudad = ciudad;
+
+        }
+
         //En C# todo es un objeto
         public override string ToString()
         {
