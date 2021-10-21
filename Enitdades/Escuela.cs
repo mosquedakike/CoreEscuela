@@ -23,7 +23,7 @@ namespace CoreEscuela.Enitdades
 
         public TiposEscuela TipoEscuela { get; set; }
 
-        public Curso[] Cursos { get; set; }
+        public List<Curso> Cursos { get; set; }
 
         //constructor de la clase o metodo
         public Escuela(string nombre, int año)
