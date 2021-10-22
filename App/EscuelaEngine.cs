@@ -23,11 +23,6 @@ namespace CoreEscuela.App
                 );
 
             CargarCursos();
-            foreach (var curso in Escuela.Cursos)
-            {
-                curso.Alumnos.AddRange(CargarAlumnos());
-            }
-            var listaA = CargarAlumnos();
             CargarAsignaturas();
             CargarEvaluaciones();
         }
@@ -48,11 +43,11 @@ namespace CoreEscuela.App
                     new Asignatura(){Nombre="Fundamentos de Fisica"},
                     new Asignatura(){Nombre="Logica de Programacion"}
                 };
-                curso.Asignaturas.AddRange(listaAsignaturas);
+                curso.Asignaturas = listaAsignaturas;
             }
         }
 
-        private IEnumerable<Alumno> CargarAlumnos()
+        private List<Alumno> GenerarAlumnos(int cantidad)
         {
             string[] FirstName = { "Jose", "Luis", "Lirya", "Emmma", "Yolanda", "Rodrigo", "Cecilia" };
             string[] SecondName = { "Miguel", "Enrique", "Angel", "Jon", "Freddy", "Antonio", "Itzel" };
@@ -62,7 +57,7 @@ namespace CoreEscuela.App
                                from n2 in SecondName
                                from n3 in LastName
                                select new Alumno { Nombre = $"{n1} {n2} {n3}" };
-            return listaAlumnos;
+            return listaAlumnos.OrderBy((alumno)=> alumno.UniqueId).Take(cantidad).ToList();
         }
 
         private void CargarCursos()
@@ -75,6 +70,13 @@ namespace CoreEscuela.App
                 new Curso(){Nombre = "401", Jornada=TiposJornada.Mañana},
                 new Curso(){Nombre = "501", Jornada=TiposJornada.Mañana},
             };
+
+            Random rnd = new Random();
+            foreach (var curso in Escuela.Cursos)
+            {
+                int cantidadRandom = rnd.Next(5, 20);
+                curso.Alumnos = GenerarAlumnos(cantidadRandom);
+            }
         }
     }
 }
