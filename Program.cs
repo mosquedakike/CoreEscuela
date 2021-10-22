@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CoreEscuela.App;
 using CoreEscuela.Enitdades;
+using CoreEscuela.Util;
 using static System.Console;
 
 namespace CoreEscuela
@@ -12,15 +13,15 @@ namespace CoreEscuela
         {
             var engine = new EscuelaEngine();
             engine.Inicializar();
+            Printer.DibujarTitulo("BIENVENIDOS A LA ESCUELA");
+
             ImprimirCursosEscuela(engine.Escuela);
             Console.ReadLine();
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
-            WriteLine("=====================");
-            WriteLine("Cursos de la Escuela");
-            WriteLine("=====================");
+            Printer.DibujarTitulo("Cursos de la Escuela");
 
             foreach (var item in escuela.Cursos)
             {

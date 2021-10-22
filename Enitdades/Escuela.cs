@@ -9,6 +9,7 @@ namespace CoreEscuela.Enitdades
     public class Escuela
     {
         string nombre;
+        public string UniqueId { get; private set; } = Guid.NewGuid().ToString();
         public string Nombre
         {
             get { return "Copia:" + nombre; }
