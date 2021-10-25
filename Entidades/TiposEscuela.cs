@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreEscuela.Enitdades
+namespace CoreEscuela.Entidades
 {
-    public enum TiposJornada
+    public enum TiposEscuela
     {
-        Mañana,
-        Tarde,
-        Noche
+        Primaria,
+        Secundaria,
+        PreEscolar
     }
 }

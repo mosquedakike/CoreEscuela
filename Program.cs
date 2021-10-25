@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreEscuela.App;
-using CoreEscuela.Enitdades;
+using CoreEscuela.Entidades;
 using CoreEscuela.Util;
 using static System.Console;
 

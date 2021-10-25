@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreEscuela.Enitdades
+namespace CoreEscuela.Entidades
 {
-    public class Asignatura
+    //Las clases abstractas no permite crear nuevas instancias de la clase
+    public abstract class ObjetoEscuelaBase
     {
         public string UniqueId { get; private set; }
         public string Nombre { get; set; }
-        public Asignatura()
+
+        public ObjetoEscuelaBase()
         {
             UniqueId = Guid.NewGuid().ToString();
         }

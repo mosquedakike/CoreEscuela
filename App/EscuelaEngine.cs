@@ -1,4 +1,4 @@
-﻿using CoreEscuela.Enitdades;
+﻿using CoreEscuela.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreEscuela.App
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
         public Escuela Escuela { get; set; }
         public EscuelaEngine()
@@ -29,20 +29,19 @@ namespace CoreEscuela.App
 
         private void CargarEvaluaciones()
         {
-            var lista = new List<Evaluaciones>();
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var asignatura in curso.Asignaturas)
                 {
                     foreach (var alumno in curso.Alumnos)
                     {
-                        Random rnd = new Random();
+                        var rnd = new Random(System.Environment.TickCount);
                         for (int i = 0; i < 5; i++)
                         {
-                            var ev = new Evaluaciones
+                            var ev = new Evaluacion
                             {
                                 Asignatura = asignatura,
-                                Nombre = $"{asignatura.Nombre} Ev#{1+1}",
+                                Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
                                 Nota = (float)(5 * rnd.NextDouble()),
                                 Alumno = alumno
                             };
@@ -59,7 +58,7 @@ namespace CoreEscuela.App
             {
                 var listaAsignaturas = new List<Asignatura>()
                 {
-                    new Asignatura(){Nombre="Ingles I"},
+                    new Asignatura(){Nombre="Ingles"},
                     new Asignatura(){Nombre="Matematicas"},
                     new Asignatura(){Nombre="Fundamentos de Fisica"},
                     new Asignatura(){Nombre="Logica de Programacion"}
@@ -78,7 +77,7 @@ namespace CoreEscuela.App
                                from n2 in SecondName
                                from n3 in LastName
                                select new Alumno { Nombre = $"{n1} {n2} {n3}" };
-            return listaAlumnos.OrderBy((alumno)=> alumno.UniqueId).Take(cantidad).ToList();
+            return listaAlumnos.OrderBy((alumno)=>alumno.UniqueId).Take(cantidad).ToList();
         }
 
         private void CargarCursos()

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreEscuela.Enitdades
+namespace CoreEscuela.Entidades
 {
-    public enum TiposEscuela
+    public class Asignatura: ObjetoEscuelaBase
     {
-        Primaria,
-        Secundaria,
-        PreEscolar
+
     }
 }
