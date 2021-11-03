@@ -17,21 +17,7 @@ namespace CoreEscuela
 
             ImprimirCursosEscuela(engine.Escuela);
 
-            Printer.DibujarLinea(50);
-            Printer.DibujarTitulo("Pruebas de Polimorfismo");
-
-            var alumnoTest = new Alumno { Nombre = "Claire Underwood" };
-
-            ObjetoEscuelaBase ob = alumnoTest;
-            Printer.DibujarTitulo($"Alumno");
-            WriteLine($"Alumno: {alumnoTest.Nombre}");
-            WriteLine($"Alumno: {alumnoTest.UniqueId}");
-            WriteLine($"Alumno: {alumnoTest.GetType()}");
-
-            Printer.DibujarTitulo("ObjetoEscuela");
-            WriteLine($"Alumno: {ob.Nombre}");
-            WriteLine($"Alumno: {ob.UniqueId}");
-            WriteLine($"Alumno: {ob.GetType()}");
+            var listaObjetos = engine.GetObjetosEscuela();
 
             Console.ReadLine();
         }
